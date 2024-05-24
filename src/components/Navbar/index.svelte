@@ -11,6 +11,3 @@
     </li>
   </ul>
 </nav>
-
-<style>
-</style>

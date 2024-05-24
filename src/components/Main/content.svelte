@@ -1,14 +1,16 @@
 <script lang="ts">
+  import { buildTestIds } from "../../application/utils.svelte";
+
   export let title: string;
   export let description: string;
 </script>
 
-<section class="content-section">
-  <h2 class="content-title">
+<section class="content-section" {...buildTestIds("content-section")}>
+  <h2 class="content-title" {...buildTestIds("content-title")}>
     {title}
   </h2>
 
-  <p class="content-description">
+  <p class="content-description" {...buildTestIds("content-description")}>
     {description}
   </p>
 </section>
