@@ -1,3 +1,84 @@
+<script lang="ts">
+  import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
+  import Toast from "../Toast/root.svelte";
+  import type { SvelteComponent } from "svelte";
+
+  let toast: SvelteComponent;
+
+  let clientName = "";
+  let clientEmail = "";
+  let clientPhoneNumber = "";
+  let isSendingEmail = false;
+
+  const handleIsFormDisabled = (
+    name: string,
+    email: string,
+    phoneNumber: string
+  ) => {
+    if (!name || !email || !phoneNumber) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const resetForm = () => {
+    clientName = "";
+    clientEmail = "";
+    clientPhoneNumber = "";
+  };
+
+  $: isFormDisabled = handleIsFormDisabled(
+    clientName,
+    clientEmail,
+    clientPhoneNumber
+  );
+
+  const sendEmail = async () => {
+    try {
+      isSendingEmail = true;
+
+      const { status } = await emailjs.send(
+        "service_ps3xv7h",
+        "template_dxtu0tv",
+        {
+          client_name: clientName,
+          client_email: clientEmail,
+          client_phone_number: clientPhoneNumber,
+        },
+        {
+          publicKey: "dqzZHw8603oOTmKPa",
+        }
+      );
+
+      isSendingEmail = false;
+
+      if (status === 200) {
+        toast.showToast("success", 3500, "Solicitação enviada com sucesso!");
+        resetForm();
+        return;
+      }
+
+      toast.showToast(
+        "error",
+        3500,
+        "Erro ao enviar solicitação",
+        "Revise as suas informações e tente novamente"
+      );
+    } catch (err) {
+      isSendingEmail = false;
+      toast.showToast(
+        "error",
+        3500,
+        "Erro ao enviar solicitação",
+        "Revise as suas informações e tente novamente"
+      );
+    }
+  };
+</script>
+
+<Toast bind:this={toast} />
+
 <div class="form-container">
   <form class="form-card">
     <h3 class="form-title">
@@ -7,25 +88,49 @@
     <section class="form-inputs-container">
       <div class="form-input-container">
         <label class="form-label" for="client-name">Qual o seu Nome?</label>
-        <input class="form-input" id="client-name" type="text" />
+        <input
+          class="form-input"
+          id="client-name"
+          type="text"
+          bind:value={clientName}
+          disabled={isSendingEmail}
+        />
       </div>
 
       <div class="form-input-container">
         <label class="form-label" for="client-email"
           >Digite o seu melhor Email</label
         >
-        <input class="form-input" id="client-email" type="email" />
+        <input
+          class="form-input"
+          id="client-email"
+          type="email"
+          bind:value={clientEmail}
+          disabled={isSendingEmail}
+        />
       </div>
 
       <div class="form-input-container">
         <label class="form-label" for="client-phone-number"
-          >Digite o seu Telefone</label
+          >Digite o seu Telefone (WhatsApp)</label
         >
-        <input class="form-input" id="client-phone-number" type="tel" />
+        <input
+          class="form-input"
+          id="client-phone-number"
+          type="tel"
+          bind:value={clientPhoneNumber}
+          disabled={isSendingEmail}
+        />
       </div>
     </section>
 
-    <button class="form-button">SOLICITAR DEMO</button>
+    <button
+      type="button"
+      class="form-button"
+      disabled={isFormDisabled || isSendingEmail}
+      on:click={sendEmail}
+      >{isSendingEmail ? "ENVIANDO SOLICITAÇÃO..." : "SOLICITAR DEMO"}</button
+    >
   </form>
 </div>
 
@@ -70,12 +175,12 @@
 
   .form-label {
     font-size: 1.2rem;
-    cursor: pointer;
   }
 
   .form-input {
     font-size: 1.2rem;
     text-align: center;
+    border-radius: 0.75rem;
 
     @media (min-width: 480px) {
       min-width: 375px;
@@ -85,5 +190,10 @@
 
   .form-button {
     font-weight: bold;
+  }
+
+  .form-button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 </style>

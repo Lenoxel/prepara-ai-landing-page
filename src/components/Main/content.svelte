@@ -1,6 +1,6 @@
 <script lang="ts">
   export let title: string;
-  export let description = "";
+  export let description: string;
 </script>
 
 <section class="content-section">
