@@ -1,7 +1,8 @@
 <script lang="ts">
-  import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
-  import Toast from "../Toast/root.svelte";
+  import emailjs from "@emailjs/browser";
   import type { SvelteComponent } from "svelte";
+  import Button from "../Button/index.svelte";
+  import Toast from "../Toast/root.svelte";
 
   let toast: SvelteComponent;
 
@@ -79,7 +80,7 @@
 
 <Toast bind:this={toast} />
 
-<div class="form-container">
+<div id="schedule-demo-form-container" class="form-container">
   <form class="form-card">
     <h3 class="form-title">
       Solicite aqui uma demo e vem conhecer a plataforma!
@@ -124,13 +125,11 @@
       </div>
     </section>
 
-    <button
-      type="button"
-      class="form-button"
-      disabled={isFormDisabled || isSendingEmail}
-      on:click={sendEmail}
-      >{isSendingEmail ? "ENVIANDO SOLICITAÇÃO..." : "SOLICITAR DEMO"}</button
-    >
+    <Button
+      isDisabled={isFormDisabled || isSendingEmail}
+      text={isSendingEmail ? "ENVIANDO SOLICITAÇÃO..." : "SOLICITAR DEMO"}
+      onClick={sendEmail}
+    />
   </form>
 </div>
 
@@ -186,14 +185,5 @@
       min-width: 375px;
       max-width: 375px;
     }
-  }
-
-  .form-button {
-    font-weight: bold;
-  }
-
-  .form-button:disabled {
-    opacity: 0.5;
-    pointer-events: none;
   }
 </style>

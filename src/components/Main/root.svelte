@@ -1,6 +1,18 @@
 <script lang="ts">
   import Content from "./content.svelte";
   import ScheduleDemoForm from "../ScheduleDemoForm/root.svelte";
+  import Button from "../Button/index.svelte";
+  import Video from "../Video/index.svelte";
+
+  const scrollIntoScheduleForm = () => {
+    const element = document.getElementById("schedule-demo-form-container");
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
 </script>
 
 <main>
@@ -15,7 +27,14 @@
     <span class="dot"></span>
   </div> -->
 
-  <ScheduleDemoForm />
+  <Video
+    width={760}
+    height={360}
+    source="https://youtube.com/embed/MX-iaTDEyGI"
+    title="Demonstração da plataforma"
+  />
+
+  <Button text="Solicite já a sua demo!" onClick={scrollIntoScheduleForm} />
 
   <section class="content-container">
     <Content
@@ -59,6 +78,8 @@
     conhecimento com paixão e determinação."
     />
   </section>
+
+  <ScheduleDemoForm />
 </main>
 
 <style>
