@@ -11,7 +11,7 @@
   </h2>
 
   <p class="content-description" {...buildTestIds("content-description")}>
-    {description}
+    {@html description}
   </p>
 </section>
 

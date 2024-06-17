@@ -19,8 +19,12 @@
   <h1 class="main-title">Engaje e prepare os seus alunos</h1>
   <p class="main-subtitle">
     Você está pronto para elevar sua prática educacional a um novo patamar?
-    Prepare-se para uma jornada de transformação com a Plataforma Prepara Aí -
-    sua aliada no caminho rumo à excelência acadêmica.
+  </p>
+  <p class="main-subtitle">
+    Prepare-se para uma jornada de <strong>transformação</strong> com a
+    Plataforma
+    <strong>Prepara Aí</strong>, a sua aliada no caminho rumo à excelência
+    acadêmica.
   </p>
 
   <!-- <div style="text-align:center">
@@ -34,48 +38,35 @@
     title="Demonstração da plataforma"
   />
 
-  <Button text="Solicite já a sua demo!" onClick={scrollIntoScheduleForm} />
+  <Button text="Comece a usar a plataforma" onClick={scrollIntoScheduleForm} />
 
   <section class="content-container">
     <Content
       title="Automatização Inteligente para o Sucesso"
-      description="Transforme seu processo de ensino com nossa automação inteligente. Ofereça
-    uma experiência de exame realista, ajustando temporizadores e pesos de
-    questões conforme sua preferência. Prepare seus alunos não apenas para
-    responder às perguntas, mas para dominar o tempo e otimizar sua estratégia
+      description="<strong>Transforme</strong> seu processo de ensino com nossa automação inteligente. Ofereça
+    uma experiência de exame realista, ajustando <strong>temporizadores</strong> e <strong>pesos de questões</strong> conforme sua preferência. Prepare seus alunos não apenas para
+    responder às perguntas, mas para <strong>dominar</strong> o tempo e <strong>otimizar</strong> sua estratégia
     de teste."
     />
 
     <Content
       title="Alcance o Pico da Educação"
-      description=" Com a Plataforma Prepara Aí, você não apenas alcança o topo da educação,
-      mas também lidera o caminho. Desenvolvida especialmente para educadores
-      apaixonados, nossa plataforma revolucionária oferece as ferramentas e
-      recursos necessários para impulsionar o aprendizado dos seus alunos."
+      description=" Com a Plataforma <strong>Prepara Aí</strong>, você não apenas alcança o topo da educação, mas também <strong>lidera o caminho</strong>. Desenvolvida especialmente para educadores apaixonados, nossa plataforma revolucionária oferece as ferramentas e recursos necessários para <strong>impulsionar o aprendizado</strong> dos seus alunos."
     />
 
     <Content
       title="Personalização e Excelência"
-      description="Crie simulados personalizados de forma simples e eficiente, escolhendo
-    entre uma ampla gama de questões ou adicionando suas próprias. Garanta
-    que cada teste seja único, adaptado às necessidades específicas da sua
-    turma, e prepare seus alunos para os desafios que os aguardam."
+      description="Crie <strong>simulados personalizados</strong> de forma simples e eficiente, escolhendo entre uma ampla gama de questões que você pode <strong>gerar automaticamente</strong> ou <strong>adicionando as suas próprias</strong>. Garanta que cada teste seja <strong>único</strong>, <strong>adaptado</strong> às necessidades específicas de sua turma, e prepare seus alunos para os desafios que os aguardam."
     />
 
     <Content
       title="Junte-se à Revolução Educacional"
-      description="Prepare-se para o futuro da educação com a Plataforma Prepara Aí.
-    Junte-se a milhares de educadores visionários que estão moldando a
-    próxima geração de líderes, capacitando seus alunos com o conhecimento e
-    as habilidades necessárias para enfrentar os desafios do mundo moderno."
+      description="Prepare-se para o futuro da educação com a Plataforma <strong>Prepara Aí</strong>. Junte-se a milhares de educadores visionários que estão moldando a próxima geração de líderes, capacitando seus alunos com o <strong>conhecimento</strong> e as <strong>habilidades</strong> necessárias para enfrentar os desafios do mundo moderno."
     />
 
     <Content
       title="Desafie os Limites do Aprendizado"
-      description="Na Plataforma Prepara Aí, a jornada educacional é uma experiência
-    dinâmica e envolvente. Desperte a curiosidade dos seus alunos,
-    desafie-os a alcançar novos patamares e inspire-os a buscar o
-    conhecimento com paixão e determinação."
+      description="Na Plataforma <strong>Prepara Aí</strong>, a jornada educacional é uma experiência <strong>dinâmica</strong> e <strong>envolvente</strong>. Desperte a curiosidade dos seus alunos, <strong>desafie-os</strong> a alcançar novos patamares e inspire-os a buscar o conhecimento com paixão e determinação."
     />
   </section>
 
@@ -89,9 +80,9 @@
   }
 
   .main-subtitle {
-    display: flex;
     text-align: center;
     font-size: 1.25rem;
+    margin: 1rem 0;
 
     @media (min-width: 1024px) {
       max-width: 50vw;
