@@ -1,7 +1,8 @@
 <script lang="ts">
   type RequestOption = "requestDemo" | "requestFreeTrial";
 
-  import emailjs from "@emailjs/browser";
+  export let onSelectClientOption: () => void;
+
   import type { SvelteComponent } from "svelte";
   import Button from "../Button/index.svelte";
   import Toast from "../Toast/root.svelte";
@@ -26,6 +27,7 @@
 
   const selectClientOption = (chosenValue: RequestOption) => {
     clientRequestOptionSelected = chosenValue;
+    onSelectClientOption();
   };
 
   const getClientRequestButtonText = (
@@ -96,21 +98,25 @@
     try {
       isSendingEmail = true;
 
-      const { status } = await emailjs.send(
-        "service_ps3xv7h",
-        "template_dxtu0tv",
+      const sendEmailResponse = await fetch(
+        "https://email-api.preparaai.com.br/api/v1/email/send",
         {
-          client_request_type: clientRequestOptionSelected,
-          client_name: clientName,
-          client_email: clientEmail,
-          client_phone_number: clientPhoneNumber,
-          client_environment_name: clientEnvironmentName,
-          client_knowledge_areas: clientKnowledgeAreas,
-        },
-        {
-          publicKey: "dqzZHw8603oOTmKPa",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            client_request_type: clientRequestOptionSelected,
+            client_name: clientName,
+            client_email: clientEmail,
+            client_phone_number: clientPhoneNumber,
+            client_environment_name: clientEnvironmentName,
+            client_knowledge_areas: clientKnowledgeAreas,
+          }),
         }
       );
+
+      const { status } = sendEmailResponse;
 
       isSendingEmail = false;
 
@@ -144,8 +150,6 @@
   <form class="form-card">
     <h3 class="form-title">O que você deseja?</h3>
 
-    <!-- <img src={check} /> -->
-
     <section class="form-inputs-container">
       <div class="form-input-card-group">
         {#each clientRequestOptions as { value, label }}
@@ -155,7 +159,9 @@
                 ? 'form-input-card-selected'
                 : 'form-input-card-not-selected'
               : ''}"
-            on:click={() => selectClientOption(value)}
+            on:click={() => {
+              selectClientOption(value);
+            }}
             type="button"
           >
             <span class="form-input-card-text">{label}</span>

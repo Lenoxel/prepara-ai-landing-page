@@ -70,7 +70,7 @@
     />
   </section>
 
-  <ScheduleDemoForm />
+  <ScheduleDemoForm onSelectClientOption={scrollIntoScheduleForm} />
 </main>
 
 <style>
@@ -95,7 +95,7 @@
     justify-content: center;
     flex-wrap: wrap;
     margin: 1rem;
-    max-width: 100vw;
+    max-width: 1280px;
     gap: 3rem;
   }
 </style>
