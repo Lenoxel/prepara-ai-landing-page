@@ -106,12 +106,12 @@
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            client_request_type: clientRequestOptionSelected,
-            client_name: clientName,
-            client_email: clientEmail,
-            client_phone_number: clientPhoneNumber,
-            client_environment_name: clientEnvironmentName,
-            client_knowledge_areas: clientKnowledgeAreas,
+            clientRequestOptionSelected,
+            clientName,
+            clientEmail,
+            clientPhoneNumber,
+            clientEnvironmentName,
+            clientKnowledgeAreas,
           }),
         }
       );
