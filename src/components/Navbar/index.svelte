@@ -1,13 +1,36 @@
+<script lang="ts">
+  import { clientRequestOptionSelected } from "../../application/client-store";
+</script>
+
 <nav>
   <ul>
     <li><a href="#top">Início</a></li>
     <li>
-      <a href="https://marlonmiguel.preparaai.com.br/"
-        >Plataforma de Simulados</a
+      <a
+        href="#demo"
+        on:click={() => {
+          clientRequestOptionSelected.set("requestDemo");
+        }}>Demonstração</a
       >
     </li>
     <li>
-      <a href="https://www.instagram.com/marlon_miguel_m/">Instagram</a>
+      <a
+        href="#free-tier"
+        on:click={() => {
+          clientRequestOptionSelected.set("requestFreeTrial");
+        }}>Plano gratuito</a
+      >
     </li>
   </ul>
 </nav>
+
+<style>
+  a {
+    transition: background-color 0.3s;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+</style>

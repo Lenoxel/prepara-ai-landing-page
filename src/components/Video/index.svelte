@@ -5,8 +5,8 @@
   export let title: string;
 </script>
 
-<!-- <video controls>
-  <source src="https://youtu.be/GkG_SE8b-q4" />
+<!-- <video class="video-iframe" {width} {height} controls>
+  <source src={source} />
   <track kind="captions" />
 </video> -->
 

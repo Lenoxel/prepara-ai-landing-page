@@ -1,8 +1,10 @@
 <script lang="ts">
-  type RequestOption = "requestDemo" | "requestFreeTrial";
-
   export let onSelectClientOption: () => void;
 
+  import {
+    clientRequestOptionSelected,
+    type RequestOption,
+  } from "../../application/client-store";
   import type { SvelteComponent } from "svelte";
   import Button from "../Button/index.svelte";
   import Toast from "../Toast/root.svelte";
@@ -23,10 +25,8 @@
     },
   ];
 
-  let clientRequestOptionSelected: RequestOption | null = null;
-
   const selectClientOption = (chosenValue: RequestOption) => {
-    clientRequestOptionSelected = chosenValue;
+    clientRequestOptionSelected.set(chosenValue);
     onSelectClientOption();
   };
 
@@ -77,7 +77,7 @@
   };
 
   const resetForm = () => {
-    clientRequestOptionSelected = null;
+    clientRequestOptionSelected.set(null);
     clientName = "";
     clientEmail = "";
     clientPhoneNumber = "";
@@ -86,7 +86,7 @@
   };
 
   $: isFormDisabled = handleIsFormDisabled(
-    clientRequestOptionSelected,
+    $clientRequestOptionSelected,
     clientName,
     clientEmail,
     clientPhoneNumber,
@@ -106,7 +106,7 @@
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            clientRequestOptionSelected,
+            clientRequestOptionSelected: $clientRequestOptionSelected,
             clientName,
             clientEmail,
             clientPhoneNumber,
@@ -154,8 +154,8 @@
       <div class="form-input-card-group">
         {#each clientRequestOptions as { value, label }}
           <button
-            class="form-input-card {clientRequestOptionSelected
-              ? clientRequestOptionSelected === value
+            class="form-input-card {$clientRequestOptionSelected
+              ? $clientRequestOptionSelected === value
                 ? 'form-input-card-selected'
                 : 'form-input-card-not-selected'
               : ''}"
@@ -169,7 +169,7 @@
         {/each}
       </div>
 
-      {#if clientRequestOptionSelected}
+      {#if $clientRequestOptionSelected}
         <div class="form-input-container">
           <label class="form-label" for="client-name">Digite o seu Nome</label>
           <input
@@ -210,7 +210,7 @@
           />
         </div>
 
-        {#if clientRequestOptionSelected === "requestFreeTrial"}
+        {#if $clientRequestOptionSelected === "requestFreeTrial"}
           <div class="form-input-container">
             <label class="form-label" for="client-environment-name"
               >Qual nome você deseja para o seu ambiente?</label
@@ -244,12 +244,12 @@
       {/if}
     </section>
 
-    {#if clientRequestOptionSelected}
+    {#if $clientRequestOptionSelected}
       <Button
         isDisabled={isFormDisabled || isSendingEmail}
         text={isSendingEmail
           ? "ENVIANDO SOLICITAÇÃO..."
-          : getClientRequestButtonText(clientRequestOptionSelected)}
+          : getClientRequestButtonText($clientRequestOptionSelected)}
         onClick={sendEmail}
       />
     {/if}
@@ -260,8 +260,8 @@
   .form-container {
     display: flex;
     justify-content: center;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
+    /* border-top: 1px solid gray; */
+    /* border-bottom: 1px solid gray; */
     max-width: 85vw;
     min-width: 85vw;
   }
@@ -302,10 +302,19 @@
   .form-input {
     font-size: 1rem;
     text-align: center;
-    border-radius: 0.5rem;
     min-width: 100%;
     max-width: 100%;
     padding: 0.25rem 0;
+    border: 1px solid #333;
+    outline: 1px solid transparent;
+    transition: border 0.3s;
+    transition: outline 0.3s;
+
+    &:focus,
+    &:hover {
+      border: 1px solid #000;
+      outline: 1px solid #000;
+    }
 
     @media (min-width: 480px) {
       font-size: 1.2rem;
@@ -330,21 +339,26 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 1px solid #333;
-    border-radius: 0.5rem;
+    /* border: 1px solid #333; */
+    /* border-radius: 0.5rem; */
     padding: 1rem;
     cursor: pointer;
     transition: transform 0.3s;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    opacity: 0.5;
 
     &:focus,
     &:hover {
       transform: scale(1.2);
+      opacity: 1;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     }
   }
 
   .form-input-card-selected {
     transform: scale(1.2);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    opacity: 1;
   }
 
   .form-input-card-not-selected {
