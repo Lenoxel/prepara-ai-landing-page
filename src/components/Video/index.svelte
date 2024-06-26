@@ -10,7 +10,17 @@
   <track kind="captions" />
 </video> -->
 
-<iframe class="video-iframe" {width} {height} src={source} {title} />
+<iframe
+  class="video-iframe"
+  {width}
+  {height}
+  src={`${source}?autoplay=0&controls=0`}
+  {title}
+  role="presentation"
+  allow="autoplay; fullscreen; picture-in-picture"
+  allowfullscreen
+  on:contextmenu={() => false}
+/>
 
 <style>
   .video-iframe {

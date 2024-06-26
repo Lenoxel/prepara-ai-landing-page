@@ -250,6 +250,7 @@
         text={isSendingEmail
           ? "ENVIANDO SOLICITAÇÃO..."
           : getClientRequestButtonText($clientRequestOptionSelected)}
+        color="success"
         onClick={sendEmail}
       />
     {/if}
@@ -339,24 +340,23 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid #333; */
-    /* border-radius: 0.5rem; */
     padding: 1rem;
     cursor: pointer;
     transition: transform 0.3s;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     opacity: 0.5;
+    border-radius: 10px;
 
     &:focus,
     &:hover {
-      transform: scale(1.2);
+      transform: translate(0, -0.75rem);
       opacity: 1;
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     }
   }
 
   .form-input-card-selected {
-    transform: scale(1.2);
+    transform: translate(0, -0.75rem);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     opacity: 1;
   }

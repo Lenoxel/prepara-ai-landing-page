@@ -31,7 +31,11 @@
     acadêmica.
   </p>
 
-  <Button text="Comece a usar a plataforma" onClick={scrollIntoScheduleForm} />
+  <Button
+    text="Comece a usar a plataforma"
+    color="success"
+    onClick={scrollIntoScheduleForm}
+  />
 
   <!-- <div style="text-align:center">
     <span class="dot"></span>
