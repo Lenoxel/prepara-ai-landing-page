@@ -176,7 +176,7 @@
             class="form-input"
             id="client-name"
             type="text"
-            placeholder="João da Silva"
+            placeholder="João Silva"
             bind:value={clientName}
             disabled={isSendingEmail}
           />
@@ -190,7 +190,7 @@
             class="form-input"
             id="client-email"
             type="email"
-            placeholder="joaodasilva@meuemail.com"
+            placeholder="joaosilva@gmail.com"
             bind:value={clientEmail}
             disabled={isSendingEmail}
           />
