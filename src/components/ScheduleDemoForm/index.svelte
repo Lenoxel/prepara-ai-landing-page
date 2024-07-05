@@ -3,7 +3,9 @@
 
   import {
     clientRequestOptionSelected,
+    selectedPlan,
     type RequestOption,
+    type PlanType,
   } from "../../application/client-store";
   import type { SvelteComponent } from "svelte";
   import Button from "../Button/index.svelte";
@@ -16,12 +18,16 @@
     label: string;
   }[] = [
     {
+      value: "requestPlan",
+      label: "Solicitar Plano",
+    },
+    {
       value: "requestDemo",
-      label: "Solicitar uma demo",
+      label: "Solicitar Demonstração",
     },
     {
       value: "requestFreeTrial",
-      label: "Solicitar período gratuito",
+      label: "Solicitar Período Gratuito",
     },
   ];
 
@@ -34,11 +40,15 @@
     currentClientRequestOptionSelected: RequestOption
   ) => {
     if (currentClientRequestOptionSelected === "requestDemo") {
-      return "SOLICITAR DEMO";
+      return "SOLICITAR";
     }
 
     if (currentClientRequestOptionSelected === "requestFreeTrial") {
-      return "SOLICITAR AMBIENTE";
+      return "SOLICITAR";
+    }
+
+    if (currentClientRequestOptionSelected === "requestPlan") {
+      return "SOLICITAR";
     }
 
     return "";
@@ -53,12 +63,24 @@
 
   const handleIsFormDisabled = (
     requestOptionSelected: RequestOption | null,
+    selectedPlan: PlanType | null,
     name: string,
     email: string,
     phoneNumber: string,
     environmentName: string,
     knowledgeAreas: string
   ) => {
+    if (requestOptionSelected === "requestPlan") {
+      return !!(
+        !selectedPlan ||
+        !name ||
+        !email ||
+        !phoneNumber ||
+        !environmentName ||
+        !knowledgeAreas
+      );
+    }
+
     if (requestOptionSelected === "requestDemo") {
       return !!(!name || !email || !phoneNumber);
     }
@@ -78,6 +100,7 @@
 
   const resetForm = () => {
     clientRequestOptionSelected.set(null);
+    selectedPlan.set(null);
     clientName = "";
     clientEmail = "";
     clientPhoneNumber = "";
@@ -87,6 +110,7 @@
 
   $: isFormDisabled = handleIsFormDisabled(
     $clientRequestOptionSelected,
+    $selectedPlan,
     clientName,
     clientEmail,
     clientPhoneNumber,
@@ -107,6 +131,7 @@
           },
           body: JSON.stringify({
             clientRequestOptionSelected: $clientRequestOptionSelected,
+            selectedPlan: $selectedPlan,
             clientName,
             clientEmail,
             clientPhoneNumber,
@@ -142,13 +167,17 @@
       );
     }
   };
+
+  let selectedPlanValue: PlanType | null = null;
+
+  selectedPlan.subscribe((value) => (selectedPlanValue = value));
 </script>
 
 <Toast bind:this={toast} />
 
 <div id="schedule-demo-form-container" class="form-container">
   <form class="form-card">
-    <h3 class="form-title">O que você deseja?</h3>
+    <h1 class="form-title">Comece agora a usar a plataforma</h1>
 
     <section class="form-inputs-container">
       <div class="form-input-card-group">
@@ -170,6 +199,32 @@
       </div>
 
       {#if $clientRequestOptionSelected}
+        {#if $clientRequestOptionSelected === "requestPlan"}
+          <div class="form-input-container">
+            <label class="form-label" for="plans">Plano Escolhido</label>
+            <select
+              id="plans"
+              class="form-select"
+              name="plans"
+              bind:value={selectedPlanValue}
+              on:change={() => selectedPlan.set(selectedPlanValue)}
+            >
+              <option class="form-select-option" value=""></option>
+              <option class="form-select-option" value="individual"
+                >Individual</option
+              >
+              <option class="form-select-option" value="essential"
+                >Essencial</option
+              >
+              <option class="form-select-option" value="advanced"
+                >Avançado</option
+              >
+              <option class="form-select-option" value="premium">Premium</option
+              >
+            </select>
+          </div>
+        {/if}
+
         <div class="form-input-container">
           <label class="form-label" for="client-name">Digite o seu Nome</label>
           <input
@@ -210,10 +265,10 @@
           />
         </div>
 
-        {#if $clientRequestOptionSelected === "requestFreeTrial"}
+        {#if ["requestPlan", "requestFreeTrial"].includes($clientRequestOptionSelected)}
           <div class="form-input-container">
             <label class="form-label" for="client-environment-name"
-              >Qual nome você deseja para o seu ambiente?</label
+              >Escolha um nome para o seu Ambiente</label
             >
             <input
               class="form-input"
@@ -280,7 +335,7 @@
   .form-title {
     color: #333;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
 
   .form-inputs-container {
@@ -310,6 +365,32 @@
     outline: 1px solid transparent;
     transition: border 0.3s;
     transition: outline 0.3s;
+    border-radius: 0.75rem;
+
+    &:focus,
+    &:hover {
+      border: 1px solid #000;
+      outline: 1px solid #000;
+    }
+
+    @media (min-width: 480px) {
+      font-size: 1.2rem;
+      min-width: 375px;
+      max-width: 375px;
+    }
+  }
+
+  .form-select {
+    font-size: 1rem;
+    text-align: center;
+    min-width: 100%;
+    max-width: 100%;
+    padding: 0.25rem 0;
+    border: 1px solid #333;
+    outline: 1px solid transparent;
+    transition: border 0.3s;
+    transition: outline 0.3s;
+    border-radius: 0.75rem;
 
     &:focus,
     &:hover {
@@ -327,10 +408,10 @@
   .form-input-card-group {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 1rem;
 
     @media (min-width: 480px) {
-      gap: 3rem;
+      gap: 2rem;
     }
   }
 
@@ -343,9 +424,9 @@
     padding: 1rem;
     cursor: pointer;
     transition: transform 0.3s;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     opacity: 0.5;
     border-radius: 10px;
+    background-color: rgba(245, 247, 250, 1);
 
     &:focus,
     &:hover {
@@ -381,10 +462,6 @@
   }
 
   .empty-section {
-    min-height: 15vh;
+    min-height: 30vh;
   }
-
-  /* input[type="radio"] {
-    transform: scale(1.5);
-  } */
 </style>

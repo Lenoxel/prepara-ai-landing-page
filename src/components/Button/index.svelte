@@ -32,7 +32,6 @@
 
     &:hover {
       background-color: rgba(0, 145, 138, 1);
-      /* background-color: rgba(40, 167, 69, 0.5); */
     }
   }
 </style>

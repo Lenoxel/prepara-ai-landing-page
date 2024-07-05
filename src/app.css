@@ -74,7 +74,7 @@ main h1 {
 }
 
 section h2 {
-  color: #333;
+  /* color: #333; */
   margin-bottom: 20px;
   font-size: 2rem;
   font-weight: 600;

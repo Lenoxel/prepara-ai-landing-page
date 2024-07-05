@@ -1,10 +1,15 @@
 <script lang="ts">
   import Content from "./content.svelte";
-  import ScheduleDemoForm from "../ScheduleDemoForm/root.svelte";
+  import ScheduleDemoForm from "../ScheduleDemoForm/index.svelte";
   import Button from "../Button/index.svelte";
   import Video from "../Video/index.svelte";
+  import Plans from "../Plans/index.svelte";
   import clientTestimonial from "../../assets/client-testimonial.mp4";
-  import { clientRequestOptionSelected } from "../../application/client-store";
+  import {
+    clientRequestOptionSelected,
+    selectedPlan,
+    ourPlansEvent,
+  } from "../../application/client-store";
 
   const scrollIntoScheduleForm = () => {
     const element = document.getElementById("schedule-demo-form-container");
@@ -17,6 +22,18 @@
   };
 
   clientRequestOptionSelected.subscribe(scrollIntoScheduleForm);
+
+  const scrollIntoOurPlans = () => {
+    const element = document.getElementById("our-plans-container");
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
+  ourPlansEvent.subscribe(scrollIntoOurPlans);
 </script>
 
 <main>
@@ -34,7 +51,7 @@
   <Button
     text="Comece a usar a plataforma"
     color="success"
-    onClick={scrollIntoScheduleForm}
+    onClick={scrollIntoOurPlans}
   />
 
   <!-- <div style="text-align:center">
@@ -67,7 +84,7 @@
     />
 
     <Content
-      title="Envolva todos os seus parceiros e colaboradores"
+      title="Envolva todos os seus professores"
       description="Divida suas turmas em <strong>segmentos</strong> e atribua cada segmento para o professor <strong>responsável pela turma</strong>. Desse modo, você consegue extrair o máximo de <strong>engajamento</strong> dos seus alunos através da dedicação exclusiva de cada professor."
     />
 
@@ -86,6 +103,14 @@
       description="Na Plataforma <strong>Prepara Aí</strong>, a jornada educacional é uma experiência <strong>dinâmica</strong> e <strong>envolvente</strong>. Desperte a curiosidade dos seus alunos, <strong>desafie-os</strong> a alcançar novos patamares e inspire-os a buscar o conhecimento com paixão e determinação."
     /> -->
   </section>
+
+  <Plans
+    onRequestPlan={(planType) => {
+      clientRequestOptionSelected.set("requestPlan");
+      selectedPlan.set(planType);
+      scrollIntoScheduleForm();
+    }}
+  />
 
   <ScheduleDemoForm onSelectClientOption={scrollIntoScheduleForm} />
 </main>

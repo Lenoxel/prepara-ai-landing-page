@@ -1,18 +1,32 @@
 <script lang="ts">
-  import { clientRequestOptionSelected } from "../../application/client-store";
+  import {
+    clientRequestOptionSelected,
+    ourPlansEvent,
+  } from "../../application/client-store";
 </script>
 
 <nav>
   <ul>
     <li><a href="#top">Início</a></li>
+
+    <li>
+      <a
+        href="#our-plans"
+        on:click={() => {
+          ourPlansEvent.set({});
+        }}>Nossos Planos</a
+      >
+    </li>
+
     <li>
       <a
         href="#demo"
         on:click={() => {
           clientRequestOptionSelected.set("requestDemo");
-        }}>Demonstração</a
+        }}>Agendar Demonstração</a
       >
     </li>
+
     <li>
       <a
         href="#free-tier"
