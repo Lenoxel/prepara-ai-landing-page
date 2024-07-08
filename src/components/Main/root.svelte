@@ -10,6 +10,12 @@
     selectedPlan,
     ourPlansEvent,
   } from "../../application/client-store";
+  import { onMount } from "svelte";
+  import { trackPageView } from "../../scripts/analytics";
+
+  onMount(() => {
+    trackPageView();
+  });
 
   const scrollIntoScheduleForm = () => {
     const element = document.getElementById("schedule-demo-form-container");
