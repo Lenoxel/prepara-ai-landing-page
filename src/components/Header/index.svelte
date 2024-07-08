@@ -5,11 +5,11 @@
 
 <header>
   <section class="header-container">
-    <img
+    <!-- <img
       class="logo-img"
       src={logo}
       alt="logo do prepara aí contendo computador, checklist e o nome da plataforma"
-    />
+    /> -->
     <h1 {...buildTestIds("header-title")} class="header-title">Prepara Aí</h1>
   </section>
 </header>

@@ -18,22 +18,47 @@
     label: string;
   }[] = [
     {
-      value: "requestPlan",
-      label: "Solicitar Plano",
+      value: "requestFreeTrial",
+      label: "Solicitar Período Gratuito",
     },
     {
       value: "requestDemo",
       label: "Solicitar Demonstração",
     },
     {
-      value: "requestFreeTrial",
-      label: "Solicitar Período Gratuito",
+      value: "requestPlan",
+      label: "Solicitar Plano",
     },
   ];
 
   const selectClientOption = (chosenValue: RequestOption) => {
     clientRequestOptionSelected.set(chosenValue);
+
+    if (chosenValue !== "requestPlan") {
+      selectedPlan.set(null);
+    }
+
     onSelectClientOption();
+  };
+
+  const moveToRequestedCard = (chosenValue: RequestOption) => {
+    const cardGroup = document.getElementById("form-input-card-group");
+    const selectedCard = document.getElementById(
+      `form-input-card-${chosenValue}`
+    );
+
+    if (cardGroup && selectedCard) {
+      const cardGroupWidth = cardGroup.offsetWidth;
+      const cardWidth = selectedCard.offsetWidth;
+      const cardLeft = selectedCard.offsetLeft;
+
+      if (
+        cardLeft < cardGroup.scrollLeft ||
+        cardLeft + cardWidth > cardGroup.scrollLeft + cardGroupWidth
+      ) {
+        cardGroup.scrollLeft = cardLeft - (cardGroupWidth - cardWidth) / 2;
+      }
+    }
   };
 
   const getClientRequestButtonText = (
@@ -170,7 +195,10 @@
 
   let selectedPlanValue: PlanType | null = null;
 
-  selectedPlan.subscribe((value) => (selectedPlanValue = value));
+  selectedPlan.subscribe((value) => {
+    selectedPlanValue = value;
+    moveToRequestedCard("requestPlan");
+  });
 </script>
 
 <Toast bind:this={toast} />
@@ -180,9 +208,10 @@
     <h1 class="form-title">Comece agora a usar a plataforma</h1>
 
     <section class="form-inputs-container">
-      <div class="form-input-card-group">
+      <div id="form-input-card-group" class="form-input-card-group">
         {#each clientRequestOptions as { value, label }}
           <button
+            id="form-input-card-{value}"
             class="form-input-card {$clientRequestOptionSelected
               ? $clientRequestOptionSelected === value
                 ? 'form-input-card-selected'
@@ -190,6 +219,7 @@
               : ''}"
             on:click={() => {
               selectClientOption(value);
+              moveToRequestedCard(value);
             }}
             type="button"
           >
@@ -408,7 +438,11 @@
   .form-input-card-group {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 1rem;
+    overflow-x: auto;
+    min-height: 8rem;
+    padding: 0.5rem;
 
     @media (min-width: 480px) {
       gap: 2rem;
@@ -427,29 +461,38 @@
     opacity: 0.5;
     border-radius: 10px;
     background-color: rgba(245, 247, 250, 1);
+    min-width: 40vw;
+    max-width: 40vw;
+    min-height: 3.5rem;
+    max-height: 3.5rem;
+
+    @media (min-width: 480px) {
+      min-width: 10rem;
+      max-width: 10rem;
+    }
 
     &:focus,
     &:hover {
-      transform: translate(0, -0.75rem);
+      /* transform: translate(0, -0.95rem); */
       opacity: 1;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     }
   }
 
   .form-input-card-selected {
-    transform: translate(0, -0.75rem);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    /* transform: translate(0, -0.95rem); */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
     opacity: 1;
   }
 
   .form-input-card-not-selected {
-    transform: scale(0.8);
+    /* transform: scale(0.85); */
     opacity: 0.5;
 
-    &:focus,
+    /* &:focus,
     &:hover {
       transform: scale(1);
-    }
+    } */
   }
 
   .form-input-card-text {

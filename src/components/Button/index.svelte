@@ -9,7 +9,7 @@
   type="button"
   class="form-button {color}"
   disabled={isDisabled}
-  on:click={onClick}>{text}</button
+  on:click={onClick}>{@html text}</button
 >
 
 <style>

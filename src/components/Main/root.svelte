@@ -39,8 +39,16 @@
 <main>
   <h1 class="main-title">Engaje e prepare os seus alunos</h1>
   <p class="main-subtitle">
-    Você está pronto para elevar sua prática educacional a um novo patamar?
+    Você está pronto para <strong>elevar</strong> a sua prática educacional a um
+    <strong>novo patamar</strong>?
   </p>
+
+  <Button
+    text="Comece agora a usar a plataforma"
+    color="success"
+    onClick={scrollIntoOurPlans}
+  />
+
   <p class="main-subtitle">
     Prepare-se para uma jornada de <strong>transformação</strong> com a
     Plataforma
@@ -48,18 +56,23 @@
     acadêmica.
   </p>
 
+  <p class="main-subtitle">
+    Quer experimentar a plataforma por <strong>1 mês</strong> e aproveitar de
+    <strong>todos os recursos</strong> que temos a oferecer?
+  </p>
+
   <Button
-    text="Comece a usar a plataforma"
+    text="Solicite nosso período gratuito"
     color="success"
-    onClick={scrollIntoOurPlans}
+    onClick={() => {
+      clientRequestOptionSelected.set("requestFreeTrial");
+      scrollIntoScheduleForm();
+    }}
   />
 
-  <!-- <div style="text-align:center">
-    <span class="dot"></span>
-  </div> -->
-
   <p class="main-subtitle">
-    Que tal assistir ao depoimento de um de nossos clientes?
+    E que tal saber um pouco sobre a <strong>experiência</strong> de nossos clientes?
+    Se liga só nesse depoimento.
   </p>
 
   <Video
