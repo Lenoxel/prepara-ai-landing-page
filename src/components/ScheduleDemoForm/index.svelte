@@ -462,13 +462,13 @@
     padding: 1rem;
     cursor: pointer;
     transition: transform 0.3s;
-    opacity: 0.5;
     border-radius: 10px;
     background-color: rgba(245, 247, 250, 1);
     min-width: 40vw;
     max-width: 40vw;
     min-height: 3.5rem;
     max-height: 3.5rem;
+    outline: transparent;
 
     @media (min-width: 480px) {
       min-width: 10rem;
@@ -477,26 +477,13 @@
 
     &:focus,
     &:hover {
-      /* transform: translate(0, -0.95rem); */
-      opacity: 1;
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+      outline: 0.25rem solid rgba(0, 145, 138, 1);
     }
   }
 
   .form-input-card-selected {
-    /* transform: translate(0, -0.95rem); */
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-    opacity: 1;
-  }
-
-  .form-input-card-not-selected {
-    /* transform: scale(0.85); */
-    opacity: 0.5;
-
-    /* &:focus,
-    &:hover {
-      transform: scale(1);
-    } */
+    /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); */
+    outline: 0.25rem solid rgba(0, 145, 138, 1);
   }
 
   .form-input-card-text {

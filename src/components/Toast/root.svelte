@@ -69,7 +69,7 @@
   }
 
   .toast.success {
-    background-color: rgba(0, 137, 123, 1);
+    background-color: rgba(0, 133, 120, 1);
   }
 
   .toast.error {

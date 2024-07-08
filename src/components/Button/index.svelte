@@ -28,6 +28,7 @@
   .form-button {
     font-weight: bold;
     transition: transform 0.3s;
+    font-size: 1.15rem;
 
     &:hover {
       transform: scale(1.05);
@@ -40,10 +41,11 @@
   }
 
   .success {
-    background-color: rgba(0, 137, 123, 1);
+    background-color: rgba(0, 133, 120, 1);
+    color: #fff;
 
     &:hover {
-      background-color: rgba(0, 145, 138, 1);
+      background-color: rgba(0, 141, 135, 1);
     }
   }
 </style>
