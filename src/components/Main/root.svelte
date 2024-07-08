@@ -53,6 +53,7 @@
     text="Comece agora a usar a plataforma"
     color="success"
     onClick={scrollIntoOurPlans}
+    trackingDetails={{ name: "start_using_platform_button" }}
   />
 
   <p class="main-subtitle">
@@ -74,6 +75,7 @@
       clientRequestOptionSelected.set("requestFreeTrial");
       scrollIntoScheduleForm();
     }}
+    trackingDetails={{ name: "request_free_trial_button" }}
   />
 
   <p class="main-subtitle">

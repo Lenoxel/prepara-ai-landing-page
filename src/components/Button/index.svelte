@@ -1,15 +1,27 @@
 <script lang="ts">
+  import { trackClickOnButton } from "../../scripts/analytics";
+
   export let isDisabled: boolean = false;
   export let text: string;
   export let color: "primary" | "success" | "error";
   export let onClick: () => void;
+  export let trackingDetails: {
+    name: string;
+    value?: string | number;
+  } | null;
 </script>
 
 <button
   type="button"
   class="form-button {color}"
   disabled={isDisabled}
-  on:click={onClick}>{@html text}</button
+  on:click={() => {
+    onClick();
+    if (trackingDetails) {
+      const { name, value = 1 } = trackingDetails;
+      trackClickOnButton(name, value);
+    }
+  }}>{@html text}</button
 >
 
 <style>

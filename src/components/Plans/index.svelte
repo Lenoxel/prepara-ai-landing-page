@@ -32,6 +32,10 @@
             onClick={() => {
               onRequestPlan("individual");
             }}
+            trackingDetails={{
+              name: "request_plan_button",
+              value: "individual",
+            }}
           />
         </p>
 
@@ -74,6 +78,10 @@
             color="success"
             onClick={() => {
               onRequestPlan("essential");
+            }}
+            trackingDetails={{
+              name: "request_plan_button",
+              value: "essential",
             }}
           />
         </p>
@@ -122,6 +130,10 @@
             onClick={() => {
               onRequestPlan("advanced");
             }}
+            trackingDetails={{
+              name: "request_plan_button",
+              value: "advanced",
+            }}
           />
         </p>
 
@@ -168,6 +180,10 @@
             color="success"
             onClick={() => {
               onRequestPlan("premium");
+            }}
+            trackingDetails={{
+              name: "request_plan_button",
+              value: "premium",
             }}
           />
         </p>

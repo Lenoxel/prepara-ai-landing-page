@@ -10,24 +10,25 @@
   import type { SvelteComponent } from "svelte";
   import Button from "../Button/index.svelte";
   import Toast from "../Toast/root.svelte";
+  import { trackClickOnButton } from "../../scripts/analytics";
 
   let toast: SvelteComponent;
 
   const clientRequestOptions: {
-    value: RequestOption;
     label: string;
+    value: RequestOption;
   }[] = [
     {
-      value: "requestFreeTrial",
       label: "Solicitar Período Gratuito",
+      value: "requestFreeTrial",
     },
     {
-      value: "requestDemo",
       label: "Solicitar Demonstração",
+      value: "requestDemo",
     },
     {
-      value: "requestPlan",
       label: "Solicitar Plano",
+      value: "requestPlan",
     },
   ];
 
@@ -217,11 +218,11 @@
                 ? 'form-input-card-selected'
                 : 'form-input-card-not-selected'
               : ''}"
+            type="button"
             on:click={() => {
               selectClientOption(value);
               moveToRequestedCard(value);
             }}
-            type="button"
           >
             <span class="form-input-card-text">{label}</span>
           </button>
@@ -337,6 +338,9 @@
           : getClientRequestButtonText($clientRequestOptionSelected)}
         color="success"
         onClick={sendEmail}
+        trackingDetails={{
+          name: "send_email_button",
+        }}
       />
     {/if}
   </form>
