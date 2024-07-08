@@ -11,7 +11,7 @@
 
     <li>
       <a
-        href="#our-plans"
+        href="#nossos-planos"
         on:click={() => {
           ourPlansEvent.set({});
         }}>Nossos Planos</a
@@ -20,7 +20,7 @@
 
     <li>
       <a
-        href="#demo"
+        href="#agendar-demo"
         on:click={() => {
           clientRequestOptionSelected.set("requestDemo");
         }}>Agendar Demonstração</a
@@ -29,7 +29,7 @@
 
     <li>
       <a
-        href="#free-tier"
+        href="#periodo-gratuito"
         on:click={() => {
           clientRequestOptionSelected.set("requestFreeTrial");
         }}>Período gratuito</a
