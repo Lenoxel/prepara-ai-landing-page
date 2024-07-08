@@ -69,7 +69,7 @@
   </p>
 
   <Button
-    text="Solicite nosso período gratuito"
+    text="Solicite seu período gratuito"
     color="success"
     onClick={() => {
       clientRequestOptionSelected.set("requestFreeTrial");
