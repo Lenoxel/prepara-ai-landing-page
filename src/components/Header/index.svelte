@@ -1,9 +1,9 @@
 <script>
   import { buildTestIds } from "../../application/utils.svelte";
-  import logo from "/logo-only-icon.svg";
+  // import logo from "/logo-only-icon.svg";
 </script>
 
-<header>
+<header class="header">
   <section class="header-container">
     <!-- <img
       class="logo-img"
@@ -15,6 +15,10 @@
 </header>
 
 <style>
+  .header {
+    background: linear-gradient(45deg, #222, #555);
+  }
+
   .header-container {
     display: flex;
     flex-direction: column;
