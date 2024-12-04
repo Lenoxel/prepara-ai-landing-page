@@ -24,6 +24,8 @@
 
 <style>
   .video-iframe {
+    border-radius: 1rem;
+
     @media (max-width: 760px) {
       max-width: 90vw;
     }
