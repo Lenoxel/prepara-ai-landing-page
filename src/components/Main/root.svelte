@@ -78,10 +78,7 @@
     trackingDetails={{ name: "request_free_trial_button" }}
   />
 
-  <p class="main-subtitle">
-    E que tal saber um pouco sobre a <strong>experiência</strong> de nossos clientes?
-    Se liga só nesse depoimento.
-  </p>
+  <h2>O que dizem nossos clientes</h2>
 
   <Video
     width={760}
