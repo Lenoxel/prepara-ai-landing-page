@@ -10,7 +10,7 @@
 
   let isHovered = false;
 
-  $: contentSectionStyles = `background-color: ${backgroundColor}; color: ${textColor}; cursor: ${isClickable ? "pointer" : "initial"}; ${isHovered && "outline: 0.25rem solid rgba(0, 145, 138, 1);"}`;
+  $: contentSectionStyles = `background-color: ${backgroundColor}; color: ${textColor}; cursor: ${isClickable ? "pointer" : "initial"}; ${isHovered && "outline: 0.2rem solid rgba(0, 145, 138, 1);"}`;
 </script>
 
 <section

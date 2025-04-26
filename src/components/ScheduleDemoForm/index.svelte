@@ -1,16 +1,15 @@
 <script lang="ts">
   export let onSelectClientOption: () => void;
 
+  import type { SvelteComponent } from "svelte";
   import {
     clientRequestOptionSelected,
     selectedPlan,
-    type RequestOption,
     type PlanType,
+    type RequestOption,
   } from "../../application/client-store";
-  import type { SvelteComponent } from "svelte";
   import Button from "../Button/index.svelte";
   import Toast from "../Toast/root.svelte";
-  import { trackClickOnButton } from "../../scripts/analytics";
 
   let toast: SvelteComponent;
 
@@ -394,17 +393,20 @@
     text-align: center;
     min-width: 100%;
     max-width: 100%;
-    padding: 0.25rem 0;
-    border: 1px solid #333;
+    padding: 0.75rem 1rem;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
     outline: 1px solid transparent;
     transition: border 0.3s;
     transition: outline 0.3s;
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
 
     &:focus,
     &:hover {
-      border: 1px solid #000;
-      outline: 1px solid #000;
+      border-color: rgba(0, 133, 120, 1);
+      box-shadow: 0 0 0 3px rgba(0, 133, 120, 0.3);
+      outline: none;
     }
 
     @media (min-width: 480px) {
@@ -414,22 +416,28 @@
     }
   }
 
+  .form-input::placeholder {
+    color: #aaa;
+    font-size: 1rem;
+  }
+
   .form-select {
     font-size: 1rem;
     text-align: center;
     min-width: 100%;
     max-width: 100%;
     padding: 0.25rem 0;
-    border: 1px solid #333;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
     outline: 1px solid transparent;
-    transition: border 0.3s;
-    transition: outline 0.3s;
+    transition: all ease 0.3s;
     border-radius: 0.75rem;
 
     &:focus,
     &:hover {
-      border: 1px solid #000;
-      outline: 1px solid #000;
+      border-color: rgba(0, 133, 120, 1);
+      box-shadow: 0 0 0 3px rgba(0, 133, 120, 0.3);
+      outline: none;
     }
 
     @media (min-width: 480px) {
@@ -469,6 +477,7 @@
     min-height: 3.5rem;
     max-height: 3.5rem;
     outline: transparent;
+    transition: all 0.3s ease;
 
     @media (min-width: 480px) {
       min-width: 10rem;
@@ -477,13 +486,15 @@
 
     &:focus,
     &:hover {
-      outline: 0.25rem solid rgba(0, 145, 138, 1);
+      border-color: rgba(0, 133, 120, 1);
+      box-shadow: 0 0 0 3px rgba(0, 133, 120, 0.3);
+      outline: none;
     }
   }
 
   .form-input-card-selected {
     /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); */
-    outline: 0.25rem solid rgba(0, 145, 138, 1);
+    outline: 0.175rem solid rgba(0, 145, 138, 1);
   }
 
   .form-input-card-text {

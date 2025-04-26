@@ -1,11 +1,7 @@
 <script lang="ts">
-  import Content from "../Main/content.svelte";
+  import { type PlanType } from "../../application/client-store";
   import Button from "../Button/index.svelte";
-  import {
-    clientRequestOptionSelected,
-    selectedPlan,
-    type PlanType,
-  } from "../../application/client-store";
+  import Content from "../Main/content.svelte";
 
   export let onRequestPlan: (planType: PlanType) => void;
 </script>
@@ -54,7 +50,7 @@
             Cadastro <strong>ilimitado</strong> de <strong>simulados</strong>
           </li>
           <li>
-            <strong>Indicadores</strong> de desempenho <strong>básicos</strong>
+            Análise básica <strong>de desempenho</strong>
           </li>
           <li>
             Suporte via <strong>e-mail</strong> em até <strong>48h</strong>
@@ -101,12 +97,14 @@
             Cadastro <strong>ilimitado</strong> de <strong>simulados</strong>
           </li>
           <li>
-            <strong>Indicadores</strong> de desempenho <strong>básicos</strong>
+            Análise básica <strong>de desempenho</strong>
           </li>
           <li>
             Geração <strong>automática</strong> de <strong>questões</strong>
           </li>
-          <li>Exportação de <strong>relatórios básicos</strong></li>
+          <li>
+            Relatórios básicos <strong>sob demanda</strong> em até 5 dias úteis
+          </li>
           <li>
             Suporte via <strong>e-mail</strong> em até <strong>24h</strong>
           </li>
@@ -152,17 +150,20 @@
             Cadastro <strong>ilimitado</strong> de <strong>simulados</strong>
           </li>
           <li>
-            <strong>Indicadores</strong> de desempenho <strong>básicos</strong>
+            Análise básica <strong>de desempenho</strong>
           </li>
           <li>
             Geração <strong>automática</strong> de <strong>questões</strong>
           </li>
           <li>
-            <strong>Indicadores</strong> de desempenho
-            <strong>avançados</strong>
+            Análise avançada <strong> de desempenho</strong>
           </li>
-          <li>Exportação de <strong>relatórios básicos</strong></li>
-          <li>Exportação de <strong>relatórios avançados</strong></li>
+          <li>
+            Relatórios básicos <strong>sob demanda</strong> em até 3 dias úteis
+          </li>
+          <li>
+            Relatórios avançados <strong>sob demanda</strong> em até 5 dias úteis
+          </li>
           <li>
             Suporte via <strong>e-mail</strong> em até <strong>12h</strong>
           </li>
@@ -192,7 +193,7 @@
 
         <ul class="plan-details">
           <li>Cadastro de até <strong>2000 alunos</strong></li>
-          <li>Cadastro de até <strong>50 admin</strong></li>
+          <li>Cadastro de até <strong>50 admins</strong></li>
           <li>
             Cadastro <strong>ilimitado</strong> de <strong>segmentos</strong>
           </li>
@@ -205,23 +206,28 @@
             Cadastro <strong>ilimitado</strong> de <strong>simulados</strong>
           </li>
           <li>
-            <strong>Indicadores</strong> de desempenho <strong>básicos</strong>
+            Análise básica <strong>de desempenho</strong>
           </li>
           <li>
             Geração <strong>automática</strong> de <strong>questões</strong>
           </li>
           <li>
-            <strong>Indicadores</strong> de desempenho
-            <strong>avançados</strong>
+            Análise avançada <strong>de desempenho</strong>
           </li>
-          <li>Exportação de <strong>relatórios básicos</strong></li>
-          <li>Exportação de <strong>relatórios avançados</strong></li>
+          <li>
+            Relatórios básicos <strong>sob demanda</strong> em até 24 horas
+          </li>
+          <li>
+            Relatórios avançados <strong>sob demanda</strong> em até 3 dias úteis
+          </li>
           <li>Acesso a <strong>API</strong> do Prepara Aí</li>
           <li>
-            Desenvolvimento de <strong>funcionalidades personalizadas</strong>
+            Possibilidade de desenvolvimento de <strong
+              >funcionalidades personalizadas</strong
+            >
           </li>
           <li>
-            Suporte via <strong>e-mail</strong> em até <strong>6h</strong>
+            Suporte via <strong>e-mail</strong> em até <strong>8h</strong>
           </li>
           <li>Suporte <strong>telefônico</strong></li>
         </ul>

@@ -58,7 +58,7 @@ header h1 {
 }
 
 @keyframes fade {
-  from { opacity: .4; } 
+  from { opacity: .4; }
   to { opacity: 1; }
 }
 
@@ -129,7 +129,7 @@ footer p {
     flex-direction: column;
     padding: 0;
   }
-  
+
   nav ul li {
     margin: 0;
   }
