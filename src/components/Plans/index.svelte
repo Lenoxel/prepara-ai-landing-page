@@ -53,7 +53,7 @@
             Análise básica <strong>de desempenho</strong>
           </li>
           <li>
-            Suporte via <strong>e-mail</strong> em até <strong>48h</strong>
+            Suporte por <strong>e-mail</strong> em até <strong>48h</strong>
           </li>
         </ul>
       </section>
@@ -100,13 +100,14 @@
             Análise básica <strong>de desempenho</strong>
           </li>
           <li>
-            Geração <strong>automática</strong> de <strong>questões</strong>
+            Criação <strong>automática</strong> de questões com
+            <strong>IA</strong>
           </li>
           <li>
             Relatórios básicos <strong>sob demanda</strong> em até 5 dias úteis
           </li>
           <li>
-            Suporte via <strong>e-mail</strong> em até <strong>24h</strong>
+            Suporte por <strong>e-mail</strong> em até <strong>24h</strong>
           </li>
         </ul>
       </section>
@@ -153,7 +154,8 @@
             Análise básica <strong>de desempenho</strong>
           </li>
           <li>
-            Geração <strong>automática</strong> de <strong>questões</strong>
+            Criação <strong>automática</strong> de questões com
+            <strong>IA</strong>
           </li>
           <li>
             Análise avançada <strong> de desempenho</strong>
@@ -165,7 +167,7 @@
             Relatórios avançados <strong>sob demanda</strong> em até 5 dias úteis
           </li>
           <li>
-            Suporte via <strong>e-mail</strong> em até <strong>12h</strong>
+            Suporte por <strong>e-mail</strong> em até <strong>12h</strong>
           </li>
         </ul>
       </section>
@@ -209,7 +211,8 @@
             Análise básica <strong>de desempenho</strong>
           </li>
           <li>
-            Geração <strong>automática</strong> de <strong>questões</strong>
+            Criação <strong>automática</strong> de questões com
+            <strong>IA</strong>
           </li>
           <li>
             Análise avançada <strong>de desempenho</strong>
@@ -227,9 +230,9 @@
             >
           </li>
           <li>
-            Suporte via <strong>e-mail</strong> em até <strong>8h</strong>
+            Suporte por <strong>e-mail</strong> em até <strong>8h</strong>
           </li>
-          <li>Suporte <strong>telefônico</strong></li>
+          <li>Suporte por <strong>WhatsApp</strong></li>
         </ul>
       </section>
     </Content>
