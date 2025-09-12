@@ -1,17 +1,16 @@
 <script lang="ts">
-  import Content from "./content.svelte";
-  import ScheduleDemoForm from "../ScheduleDemoForm/index.svelte";
-  import Button from "../Button/index.svelte";
-  import Video from "../Video/index.svelte";
-  import Plans from "../Plans/index.svelte";
-  import clientTestimonial from "../../assets/client-testimonial.mp4";
+  import { onMount } from "svelte";
   import {
     clientRequestOptionSelected,
-    selectedPlan,
     ourPlansEvent,
+    selectedPlan,
   } from "../../application/client-store";
-  import { onMount } from "svelte";
+  import imageSuccessOpacity from "../../assets/image-success-opacity.png";
   import { trackPageView } from "../../scripts/analytics";
+  import Button from "../Button/index.svelte";
+  import Plans from "../Plans/index.svelte";
+  import ScheduleDemoForm from "../ScheduleDemoForm/index.svelte";
+  import Content from "./content.svelte";
 
   onMount(() => {
     trackPageView();
@@ -43,27 +42,34 @@
 </script>
 
 <main>
-  <h1 class="main-title">Engaje e prepare os seus alunos</h1>
-  <p class="main-subtitle">
-    Você está pronto para <strong>elevar</strong> a sua prática educacional a um
-    <strong>novo patamar</strong>?
-  </p>
+  <div class="hero">
+    <img
+      src={imageSuccessOpacity}
+      alt="Imagem ilustrativa de pessoas comemorando o sucesso"
+    />
 
-  <Button
-    text="Comece agora a usar a plataforma"
-    color="success"
-    onClick={scrollIntoOurPlans}
-    trackingDetails={{ name: "start_using_platform_button" }}
-  />
+    <div class="overlay">
+      <h1 class="main-title" style="max-width: 50rem;">
+        Transforme a preparação dos seus alunos com a Plataforma Prepara Aí
+      </h1>
 
-  <p class="main-subtitle">
-    Prepare-se para uma jornada de <strong>transformação</strong> com a
-    Plataforma
-    <strong>Prepara Aí</strong>, a sua aliada no caminho rumo à excelência
-    acadêmica.
-  </p>
+      <p class="main-subtitle">
+        Engaje e prepare os seus alunos com uma plataforma inovadora para
+        criação de <strong>simulados</strong> feita sob medida para educadores dedicados
+        como você. Seja a força aliada no caminho rumo à excelência acadêmica que
+        vai elevar o desempenho dos seus alunos a níveis extraordinários.
+      </p>
 
-  <p class="main-subtitle">
+      <Button
+        text="Comece agora a usar a plataforma"
+        color="success"
+        onClick={scrollIntoOurPlans}
+        trackingDetails={{ name: "start_using_platform_button" }}
+      />
+    </div>
+  </div>
+
+  <!-- <p class="main-subtitle">
     Quer experimentar a plataforma por <strong>1 mês</strong> e aproveitar de
     <strong>todos os recursos</strong> que temos a oferecer?
   </p>
@@ -76,16 +82,16 @@
       scrollIntoScheduleForm();
     }}
     trackingDetails={{ name: "request_free_trial_button" }}
-  />
+  /> -->
 
-  <h2>O que dizem nossos clientes</h2>
+  <!-- <h2>O que dizem nossos clientes</h2> -->
 
-  <Video
+  <!-- <Video
     width={760}
     height={360}
     source={clientTestimonial}
     title="Demonstração da plataforma"
-  />
+  /> -->
 
   <section class="content-container">
     <Content
@@ -135,13 +141,13 @@
 
 <style>
   .main-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     text-align: center;
   }
 
   .main-subtitle {
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin: 1rem 0;
 
     @media (min-width: 1024px) {
@@ -157,5 +163,36 @@
     margin: 3rem 1rem;
     max-width: 1024px;
     gap: 3rem;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .overlay {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
   }
 </style>

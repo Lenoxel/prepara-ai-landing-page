@@ -148,7 +148,7 @@
       isSendingEmail = true;
 
       const sendEmailResponse = await fetch(
-        "https://email-api.preparaai.com.br/api/v1/email/send",
+        "https://email-api.preparaai.com.br/api/email/send",
         {
           method: "POST",
           headers: {
