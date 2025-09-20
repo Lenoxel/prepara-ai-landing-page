@@ -141,14 +141,30 @@
 
 <style>
   .main-title {
-    font-size: 3.5rem;
     text-align: center;
+    font-size: 2rem;
+
+    @media (min-width: 480px) {
+      font-size: 2.5rem;
+    }
+
+    @media (min-width: 760px) {
+      font-size: 3.5rem;
+    }
   }
 
   .main-subtitle {
     text-align: center;
-    font-size: 1.5rem;
     margin: 1rem 0;
+    font-size: 1rem;
+
+    @media (min-width: 480px) {
+      font-size: 1.2rem;
+    }
+
+    @media (min-width: 760px) {
+      font-size: 1.5rem;
+    }
 
     @media (min-width: 1024px) {
       max-width: 50vw;
